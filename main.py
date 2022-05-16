@@ -170,8 +170,8 @@ it's legit to use it to test our model's predicted results
 ./images/validation/sad/70.jpg
 '''
 
-# img = mpimg.imread('./images/validation/sad/70.jpg')
-# plt.imshow(img)
+img = mpimg.imread('./images/validation/sad/70.jpg')
+plt.imshow(img)
 
 test_image = image.load_img('./images/validation/sad/70.jpg', 
                             target_size=(48, 48), color_mode = "grayscale")
