@@ -2,7 +2,6 @@
 """
 Created on Sun May 13 20:15:26 2022
 
-@author: Hon Ching Li, ___, ____
 """
 
 
@@ -126,7 +125,7 @@ model.compile(optimizer = 'adam', loss = 'categorical_crossentropy',
 '''Training cnn, meanwhile the testset going to be evaluate at the same time
 '''
 
-history = model.fit(x=training_set, validation_data = test_set, epochs = 30)
+history = model.fit(x=training_set, validation_data = test_set, epochs = 25)
 
 
 
@@ -166,8 +165,13 @@ plt.legend(loc='upper right')
 The following aren't train set, these aren't be train into model, so
 it's legit to use it to test our model's predicted results
 ./images/validation/angry/157.jpg
-./images/validation/angry/65.jpg
 ./images/validation/sad/70.jpg
+
+./images/validation/sad/70.jpg
+./images/validation/angry/842.jpg
+./images/validation/happy/62.jpg
+./images/validation/neutral/542.jpg
+./images/validation/surprise/1033.jpg
 '''
 
 img = mpimg.imread('./images/validation/sad/70.jpg')
@@ -180,7 +184,7 @@ test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis=0)
 prediction = model.predict(test_image/255.0)
 
-print(training_set.class_indices)
+# print(training_set.class_indices)
 
 ''' discover that each index in prediction[0] has 1 percentage number
  corresponding to the angry, happy, neutral, sad, surprise
@@ -205,15 +209,6 @@ if most_poss_idx>=0:
     print("This face is very likely to be " + '"' + res + '"')
 else:
     print("Face invalid")
-
-
-# if prediction[0][0] > 0.5:
-#     prediction = 'dog'
-# else:
-#     prediction = 'cat'
-    
-# print(prediction)
-
 
 
 
